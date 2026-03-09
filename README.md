@@ -1,6 +1,8 @@
-# NIGHTHUNTER
+# NIGHTHUNTER v3
 
-NIGHTHUNTER é uma ferramenta de OSINT que busca um username em diversos sites para identificar perfis públicos associados.
+Advanced OSINT Recon Framework
+
+Ferramenta OSINT para buscar usernames em centenas de sites da internet.
 
 ## Instalação
 
@@ -13,3 +15,11 @@ pip install -r requirements.txt
 ## Uso
 
 python3 nighthunter.py
+
+## Exemplo
+
+Digite o username alvo e o NIGHTHUNTER irá procurar perfis públicos em diversos sites.
+
+## Aviso
+
+Use apenas para fins educacionais e de pesquisa OSINT.
