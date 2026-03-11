@@ -1,76 +1,91 @@
 import requests
-import time
 import json
-from rich.progress import track
-from colorama import Fore, Style
+import os
 
-print("""
-███╗   ██╗██╗ ██████╗ ██╗  ██╗████████╗
-████╗  ██║██║██╔════╝ ██║  ██║╚══██╔══╝
-██╔██╗ ██║██║██║  ███╗███████║   ██║
-██║╚██╗██║██║██║   ██║██╔══██║   ██║
-██║ ╚████║██║╚██████╔╝██║  ██║   ██║
-╚═╝  ╚═══╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝
+from modules.ip_lookup import lookup_ip
+from modules.email_lookup import lookup_email
+from modules.domain_lookup import lookup_domain
 
-NIGHTHUNTER v3
-Advanced OSINT Recon Framework
-Feito Por Dias
-Use com Cuidado e Responsabilidade
+
+def banner():
+    print("""
+███╗   ██╗██╗ ██████╗ ██╗  ██╗████████╗██╗  ██╗██╗   ██╗███╗   ██╗████████╗███████╗██████╗ 
+████╗  ██║██║██╔════╝ ██║  ██║╚══██╔══╝██║  ██║██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗
+██╔██╗ ██║██║██║  ███╗███████║   ██║   ███████║██║   ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝
+██║╚██╗██║██║██║   ██║██╔══██║   ██║   ██╔══██║██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗
+██║ ╚████║██║╚██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝██║ ╚████║   ██║   ███████╗██║  ██║
+╚═╝  ╚═══╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+
+NIGHTHUNTER v3 - OSINT Framework
 """)
 
-username = input("Digite o username alvo ➤ ")
 
-# carregar sites
-with open("sites.txt", "r") as f:
-    lista_sites = list(set(f.read().splitlines()))
+def scan_username(username):
 
-print(f"\nTarget : {username}")
-print(f"Sites  : {len(lista_sites)}")
-print("\nScanning...\n")
+    print(f"\n🔎 Procurando username: {username}\n")
 
-encontrados = []
-inicio = time.time()
+    with open("sites.txt", "r") as f:
+        sites = f.read().splitlines()
 
-headers = {
-    "User-Agent": "Mozilla/5.0"
-}
+    resultados = []
 
-for site in track(lista_sites, description="Escaneando..."):
-    url = site.format(username)
+    for site in sites:
 
-    try:
-        r = requests.get(url, headers=headers, timeout=5)
+        url = site.replace("{}", username)
 
-        if r.status_code == 200:
-            encontrados.append(url)
+        try:
 
-    except:
-        pass
+            r = requests.get(url, timeout=5)
 
-fim = time.time()
+            if r.status_code == 200:
+                print(f"✔ Encontrado: {url}")
+                resultados.append(url)
 
-print("\nScan finalizado\n")
+        except:
+            pass
 
-if encontrados:
-    print(Fore.GREEN + "User encontrado em:\n" + Style.RESET_ALL)
-    for u in encontrados:
-        print(u)
-else:
-    print(Fore.RED + "Nenhum perfil encontrado" + Style.RESET_ALL)
+    with open("resultado.json", "w") as file:
+        json.dump(resultados, file, indent=4)
 
-# salvar resultado
-resultado = {
-    "username": username,
-    "perfis": encontrados
-}
+    print("\nScan finalizado.")
+    print("Resultados salvos em resultado.json")
 
-with open("resultado.json", "w") as f:
-    json.dump(resultado, f, indent=4)
 
-print("\nRelatório salvo em resultado.json")
+def menu():
 
-# estatísticas
-print("\n--- Estatísticas ---")
-print(f"Sites verificados: {len(lista_sites)}")
-print(f"Perfis encontrados: {len(encontrados)}")
-print(f"Tempo total: {round(fim - inicio, 2)} segundos")
+    banner()
+
+    print("""
+1 - Scan Username
+2 - Lookup IP
+3 - Lookup Email
+4 - Lookup Domain
+0 - Sair
+""")
+
+    escolha = input("Escolha uma opção: ")
+
+    if escolha == "1":
+        username = input("Username: ")
+        scan_username(username)
+
+    elif escolha == "2":
+        ip = input("IP: ")
+        lookup_ip(ip)
+
+    elif escolha == "3":
+        email = input("Email: ")
+        lookup_email(email)
+
+    elif escolha == "4":
+        domain = input("Domínio: ")
+        lookup_domain(domain)
+
+    elif escolha == "0":
+        exit()
+
+    else:
+        print("Opção inválida")
+
+
+menu()

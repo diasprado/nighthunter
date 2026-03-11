@@ -14,11 +14,11 @@ O objetivo do projeto é facilitar **investigações OSINT educacionais e pesqui
 
 # Funcionalidades
 
-* 🔎 Scan de usernames em múltiplos sites
-* ⚡ Scanner rápido
-* 📊 Estatísticas de resultados
-* 💾 Exportação de relatório
-* 🌐 Ferramenta OSINT open-source
+*  Scan de usernames em múltiplos sites
+*  Scanner rápido
+*  Estatísticas de resultados
+*  Exportação de relatório
+*  Ferramenta OSINT open-source
 
 ---
 
