@@ -1,3 +1,4 @@
-osint-env/
-__pycache__/
+osint-env
+__pycache__
+*.pyc
 resultado.json
