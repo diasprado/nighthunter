@@ -22,43 +22,38 @@ O objetivo do projeto é auxiliar pesquisas OSINT, análise de presença digital
 
 # Funcionalidades
 
-• Scan de usernames em múltiplos sites
-• OSINT de email
-• OSINT de domínio
-• OSINT de IP
-• Scanner rápido com múltiplas requisições
-• Estatísticas de resultados
-• Exportação de relatórios
-• Relatórios em JSON e HTML
-• Sistema de plugins
-• Ferramenta OSINT open-source
-
+- Scan de usernames em múltiplos sites  
+- OSINT de email **reforçado** (MX check + perfis sociais)  
+- OSINT de domínio  
+- OSINT de IP **completo**  
+  - Detecção de IP privado  
+  - País, cidade e ISP  
+  - Latitude / Longitude  
+  - Timezone  
+  - Proxy / VPN detection  
+- Scanner rápido com múltiplas requisições  
+- Estatísticas de resultados  
+- Exportação de relatórios (JSON e HTML)  
+- Sistema de plugins  
+- Ferramenta OSINT open-source  
 ---
 
 # Estrutura do Projeto
 
-nighthunter
-│
-├── core
-│   ├── scanner.py
-│   ├── osint_email.py
-│   ├── osint_ip.py
-│   ├── osint_domain.py
-│
-├── plugins
-│   └── plugin_example.py
-│
-├── reports
-│   ├── report.html
-│   └── results.json
-│
-├── data
-│   └── sites.txt
-│
-├── nighthunter.py
-├── requirements.txt
-└── README.md
-
+- Scan de usernames em múltiplos sites  
+- OSINT de email **reforçado** (MX check + perfis sociais)  
+- OSINT de domínio  
+- OSINT de IP **completo**  
+  - Detecção de IP privado  
+  - País, cidade e ISP  
+  - Latitude / Longitude  
+  - Timezone  
+  - Proxy / VPN detection  
+- Scanner rápido com múltiplas requisições  
+- Estatísticas de resultados  
+- Exportação de relatórios (JSON e HTML)  
+- Sistema de plugins  
+- Ferramenta OSINT open-source  
 ---
 
 # Instalação
@@ -79,60 +74,55 @@ pip install -r requirements.txt
 
 # Uso
 
-Execute a ferramenta
-
 python3 nighthunter.py
-
-Digite o username alvo
-
-Digite o username alvo ➤ dias
-
-Exemplo de saída
-
-Scanning...
-
-User encontrado em:
-https://github.com/"nome"
-https://twitter.com/"nome"
-https://reddit.com/user/"nome"
 
 ---
 
 # Relatórios
-
-Após o scan o NIGHTHUNTER pode gerar relatórios:
+Após o scan o NIGHTHUNTER gera relatórios em:
 
 reports/results.json
+
 reports/report.html
 
-Esses relatórios podem ser utilizados para documentação de investigações OSINT.
+Podem ser usados para documentação de investigações OSINT.
 
 ---
 
 # Roadmap
 
-Próximas melhorias planejadas
+Roadmap
 
-• Scan em 1000+ sites
-• Multithreading para scans mais rápidos
-• Integração com APIs OSINT
-• Modo TOR para anonimização
-• Dashboard web
-• Sistema avançado de plugins
-• Geolocalização de IP
-• Integração com bases de dados públicas
+Próximas melhorias planejadas:
 
+Scan em 1000+ sites
+
+Multithreading para scans mais rápidos
+
+Integração com APIs OSINT
+
+Modo TOR para anonimização
+
+Dashboard web
+
+Sistema avançado de plugins
+
+Geolocalização de IP mais precisa
+
+Integração com bases de dados públicas
 ---
 
 # Contribuição
 
-Contribuições são bem-vindas.
+Contribuições são bem-vindas:
 
-1. Fork o projeto
-2. Crie uma branch para sua feature
-3. Commit suas alterações
-4. Faça um Pull Request
+Fork o projeto
 
+Crie uma branch para sua feature
+
+Commit suas alterações
+
+Faça um Pull Request
 ---
 
 # Aviso
@@ -141,12 +131,13 @@ Esta ferramenta foi desenvolvida apenas para fins educacionais e pesquisa OSINT.
 
 Não utilize para:
 
-• invasão de privacidade
-• perseguição online
-• atividades ilegais
+invasão de privacidade
+
+perseguição online
+
+atividades ilegais
 
 O autor não se responsabiliza pelo uso indevido da ferramenta.
-
 ---
 
 # Licença
